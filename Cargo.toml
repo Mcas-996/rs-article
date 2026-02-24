@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+harper-core = "0.5"
+ratatui = "0.29"
+arboard = "3.4"
+crossterm = "0.28"
