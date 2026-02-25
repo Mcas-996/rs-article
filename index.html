@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rs-grammar</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        h1 { color: #00d9ff; }
+        .info {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .error {
+            background: #3a1c1c;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #ff6b6b;
+        }
+        #loading { color: #00d9ff; }
+    </style>
+</head>
+<body>
+    <h1>rs-grammar</h1>
+    <p>A Rust-based grammar checker</p>
+    
+    <div id="loading">Loading WASM module...</div>
+    <div id="info" class="info" style="display: none;">
+        <h3>WebAssembly Loaded</h3>
+        <p>The rs-grammar grammar checker is running in your browser.</p>
+        <p><strong>Note:</strong> This is a TUI application. The terminal-based UI requires a local terminal to function properly.</p>
+    </div>
+    <div id="error" class="error" style="display: none;">
+        <h3>Error</h3>
+        <p id="error-message"></p>
+    </div>
+
+    <script type="module">
+        async function run() {
+            try {
+                const wasm = await import('./rs_grammar.js');
+                await wasm.default();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('info').style.display = 'block';
+            } catch (e) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-message').textContent = e.message || String(e);
+                console.error('WASM loading error:', e);
+            }
+        }
+        run();
+    </script>
+</body>
+</html>

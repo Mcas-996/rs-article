@@ -8,3 +8,23 @@ harper-core = "0.5"
 ratatui = "0.29"
 arboard = "3.4"
 crossterm = "0.28"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "console",
+    "Window",
+    "Document",
+    "Element",
+    "HtmlElement",
+]
+
+[dependencies.js-sys]
+version = "0.3"
+
+[dev-dependencies]
+wasm-bindgen-cli = "0.2"
+
+[profile.release]
+opt-level = "z"
+lto = true
