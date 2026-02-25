@@ -31,7 +31,7 @@ jobs:
 
       - name: Build WASM
         run: |
-          wasm-pack build --target web --out-dir ./dist/pkg --features web
+          wasm-pack build --target web --out-dir ./dist/pkg --no-default-features --features web
 
       - name: Copy static files
         run: |
