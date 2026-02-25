@@ -3,6 +3,9 @@ name = "rs-grammar"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 harper-core = "0.5"
 ratatui = "0.29"
@@ -21,6 +24,12 @@ features = [
 
 [dependencies.js-sys]
 version = "0.3"
+
+[dependencies.wasm-bindgen]
+version = "0.2"
+
+[dependencies.console_error_panic_hook]
+version = "0.1"
 
 [dev-dependencies]
 wasm-bindgen-cli = "0.2"
