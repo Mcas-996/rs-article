@@ -48,7 +48,7 @@
     <script type="module">
         async function run() {
             try {
-                const wasm = await import('./rs_grammar.js');
+                const wasm = await import('./pkg/rs_grammar.js');
                 await wasm.default();
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('info').style.display = 'block';
